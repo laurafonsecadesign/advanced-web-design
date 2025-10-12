@@ -87,7 +87,7 @@ header {
 
 .cover-title {
   font-family: "BBH Sans Bogle", sans-serif;
-  font-size: 216px;
+  font-size: clamp(5rem, 15vw, 20rem);
   font-weight: 400;
   line-height: 0.6;
   color: #0052cc;
