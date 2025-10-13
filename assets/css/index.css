@@ -1,0 +1,81 @@
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: #0052cc;
+  line-height: 1.6;
+  overflow-x: hidden;
+  background-color: #fff8d6;
+}
+
+/* Typography */
+h1,
+h2 {
+  font-family: "BBH Sans Bogle", sans-serif;
+  color: #0052cc;
+}
+
+h3 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  color: inherit;
+}
+
+p {
+  color: inherit;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: #0052cc;
+  transition: all 0.3s ease;
+}
+
+/* Alt section styling */
+.alt-bg {
+  color: #0052cc;
+}
+
+.alt-bg p {
+  color: #0052cc;
+}
+
+/* Container */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Animations */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
