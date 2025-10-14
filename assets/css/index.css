@@ -1,3 +1,6 @@
+@import url(https://meyerweb.com/eric/tools/css/reset/reset.css);
+@import url("sow.css");
+
 /* Reset & Base Styles */
 * {
   margin: 0;
