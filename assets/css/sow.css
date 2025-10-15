@@ -321,6 +321,29 @@ footer {
   color: #fff8d6;
 }
 
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.github-link {
+  display: inline-block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.github-link:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+
+.github-icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
 footer p {
   color: #fff8d6;
   font-family: "Inter", sans-serif;
@@ -342,12 +365,17 @@ footer p {
     font-size: 1.5rem;
   }
 
+  .github-icon {
+    width: 24px;
+    height: 24px;
+  }
+
   footer p {
     font-size: 0.75rem;
   }
 }
 
-/* Add this with your other animations at the top */
+/* Animations */
 @keyframes gentleRotate {
   0% {
     transform: translate(-50%, -50%) rotate(0deg);

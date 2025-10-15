@@ -44,15 +44,6 @@ a {
   transition: all 0.3s ease;
 }
 
-/* Alt section styling */
-.alt-bg {
-  color: #0052cc;
-}
-
-.alt-bg p {
-  color: #0052cc;
-}
-
 /* Container */
 .container {
   max-width: 1400px;
