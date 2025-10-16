@@ -112,7 +112,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.2em;
-  animation: zoomIn 1s ease-out forwards; /* Changed from slideInFromLeft to zoomIn */
+  animation: zoomIn 1s ease-out forwards;
   color: #0052cc;
 }
 
@@ -392,6 +392,17 @@ footer p {
   }
   100% {
     transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
     opacity: 1;
   }
 }
