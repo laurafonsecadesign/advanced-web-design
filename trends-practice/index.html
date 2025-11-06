@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gracie Abrams - Official</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -19,7 +25,7 @@
       <div>GOOD RIDDANCE</div>
     </div>
 
-    <div class="content">
+    <div class="content fade-in-section">
       <h2>Latest Album</h2>
       <p>
         'Good Riddance', produced by Aaron Dessner, marks Gracie's evolution as
@@ -44,11 +50,11 @@
       </div>
     </div>
 
-    <div class="normal-bg">
+    <div class="normal-bg slide-in-section">
       <div>TOUR 2023</div>
     </div>
 
-    <div class="content">
+    <div class="content fade-in-section">
       <h2>Live Performances</h2>
       <p>
         Known for her intimate live shows, Gracie creates an atmosphere where
@@ -188,6 +194,77 @@
       </div>
     </div>
 
+    <div class="scrollytelling">
+      <div class="sticky-content" id="sticky-image">GOOD RIDDANCE</div>
+      <div class="scroll-content">
+        <div class="scroll-section" data-image="Where do we go now?">
+          <div class="content">
+            <h2>Where do we go now?</h2>
+            <p>
+              A haunting melody that explores the uncertainty of moving forward
+              after a relationship ends. The song captures the raw emotion of
+              standing at life's crossroads.
+            </p>
+          </div>
+        </div>
+        <div class="scroll-section" data-image="I miss you, I'm sorry">
+          <div class="content">
+            <h2>I miss you, I'm sorry</h2>
+            <p>
+              A delicate confession of regret and longing, delivered with
+              Gracie's signature intimate vocals. The track showcases her
+              ability to turn personal moments into universal experiences.
+            </p>
+          </div>
+        </div>
+        <div class="scroll-section" data-image="Block me out">
+          <div class="content">
+            <h2>Block me out</h2>
+            <p>
+              An introspective journey through self-discovery and healing,
+              featuring minimalist production that lets the raw emotions shine
+              through.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer fade-in-section">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Connect</h3>
+          <ul>
+            <li>Instagram</li>
+            <li>Twitter</li>
+            <li>YouTube</li>
+            <li>TikTok</li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Latest</h3>
+          <ul>
+            <li>Tour Dates</li>
+            <li>Merch</li>
+            <li>Newsletter</li>
+            <li>Press</li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Music</h3>
+          <ul>
+            <li>Spotify</li>
+            <li>Apple Music</li>
+            <li>SoundCloud</li>
+            <li>Bandcamp</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2024 Gracie Abrams. All rights reserved.
+      </div>
+    </footer>
+
     <script>
       // Theme toggle functionality
       const themeToggle = document.getElementById("theme-toggle");
@@ -220,14 +297,17 @@
 
       // Handle CSS-based parallax
       function handleMotionPreference() {
-        const parallaxElements = document.querySelectorAll(".parallax-bg");
+        const parallaxElements = document.querySelectorAll(".parallax-bg, .normal-bg");
 
         if (isReducedMotion) {
-          // User prefers reduced motion - disable parallax
           parallaxElements.forEach((el) => {
             el.style.backgroundAttachment = "scroll";
           });
           console.log("Parallax disabled: user prefers reduced motion");
+        } else {
+          parallaxElements.forEach((el) => {
+            el.style.backgroundAttachment = "fixed";
+          });
         }
       }
 
@@ -281,9 +361,56 @@
         updateParallax();
       }
 
+      // Scrollytelling initialization
+      function initScrollytelling() {
+        const sections = document.querySelectorAll(".scroll-section");
+        const stickyImage = document.getElementById("sticky-image");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                sections.forEach((section) =>
+                  section.classList.remove("active")
+                );
+                entry.target.classList.add("active");
+                stickyImage.textContent = entry.target.dataset.image;
+              }
+            });
+          },
+          {
+            threshold: 0.5,
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+      }
+
+      // Content animations initialization
+      function initContentAnimations() {
+        const fadeElements = document.querySelectorAll(".fade-in-section");
+        const slideElements = document.querySelectorAll(".slide-in-section");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+              }
+            });
+          },
+          { threshold: 0.2 }
+        );
+
+        fadeElements.forEach((el) => observer.observe(el));
+        slideElements.forEach((el) => observer.observe(el));
+      }
+
       // Initialize everything
       handleMotionPreference();
       initParallax();
+      initScrollytelling();
+      initContentAnimations();
 
       // Listen for motion preference changes
       prefersReducedMotion.addEventListener("change", (e) => {
