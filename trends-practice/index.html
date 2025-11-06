@@ -297,7 +297,9 @@
 
       // Handle CSS-based parallax
       function handleMotionPreference() {
-        const parallaxElements = document.querySelectorAll(".parallax-bg, .normal-bg");
+        const parallaxElements = document.querySelectorAll(
+          ".parallax-bg, .normal-bg"
+        );
 
         if (isReducedMotion) {
           parallaxElements.forEach((el) => {
